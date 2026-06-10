@@ -46,15 +46,16 @@ registerSocketHandlers(io);
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/queuecure';
 
+
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    console.log(`✅ MongoDB connected: ${MONGO_URI}`);
+    console.log(`✅ MongoDB connected`);
     server.listen(PORT, () => {
       console.log(`🚀 Queue Cure backend running on http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error('❌ MongoDB connection failed:', err.message);
+    console.error('❌ MongoDB connection failed:', err);
     process.exit(1);
   });
